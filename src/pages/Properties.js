@@ -14,10 +14,11 @@ import { motion } from "framer-motion";
 import AnimationTitles from "../components/functions/AnimationTitles";
 import "../property-cards.css";
 import { useState } from 'react';
+import PropertyFilter from '../components/PropertyFilter';
+import '../components/PropertyFilter.css';
 
 function Properties() {
-    // Add state for properties and active category
-    const [activeCategory, setActiveCategory] = useState('All');
+    // Remove activeCategory state since we're using filters now
     const [properties] = useState([
         {
             id: 1,
@@ -75,25 +76,30 @@ function Properties() {
         }
     ]);
 
-    // Modified active function to handle category filtering
-    function handleCategoryClick(e, category) {
-        let act = document.querySelectorAll(".active");
-        act[0].classList.remove("active");
-        e.target.classList.add("active");
-        setActiveCategory(category);
-    }
+    const [filters, setFilters] = useState({
+        minPrice: '',
+        maxPrice: '',
+        propertyType: 'All'
+    });
 
-    // Like button function (unchanged)
+    const handleFilterChange = (newFilters) => {
+        setFilters(newFilters);
+    };
+
     function like(e) {
         return e.target.classList.value === "fa-regular fa-heart like"
             ? (e.target.classList.value = "fa-solid fa-heart like text-danger")
             : (e.target.classList.value = "fa-regular fa-heart like");
     }
 
-    // Filter properties based on active category
-    const filteredProperties = activeCategory === 'All' 
-        ? properties 
-        : properties.filter(property => property.type === activeCategory);
+    // Update filtered properties to only use filter state
+    const filteredProperties = properties.filter(property => {
+        const matchesType = filters.propertyType === 'All' || property.type === filters.propertyType;
+        const matchesMinPrice = !filters.minPrice || parseFloat(property.price) >= parseFloat(filters.minPrice);
+        const matchesMaxPrice = !filters.maxPrice || parseFloat(property.price) <= parseFloat(filters.maxPrice);
+        
+        return matchesType && matchesMinPrice && matchesMaxPrice;
+    });
 
     return (
         // Start properties
@@ -103,81 +109,12 @@ function Properties() {
                     className="title mx-auto"
                     title="Discover more properties"
                 />
-                {/* Update the category buttons */}
-                <div className="tabs d-flex justify-content-start justify-content-sm-center align-items-center flex-nowrap w-lg-50">
-                    <Swiper
-                        className="mySwiper overflow-none"
-                        grabCursor={true}
-                        spaceBetween={15}
-                        slidesPerView={6}
-                        breakpoints={{
-                            0: {
-                                slidesPerView: 3,
-                            },
-                            768: {
-                                slidesPerView: 6,
-                            },
-                        }}
-                    >
-                        <SwiperSlide>
-                            <Button
-                                className={`ms-0 bg-black-100 border-0 ${activeCategory === 'All' ? 'active' : ''}`}
-                                onClick={(e) => handleCategoryClick(e, 'All')}
-                            >
-                                All
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className={`ms-0 bg-black-100 border-0 ${activeCategory === 'Cottage' ? 'active' : ''}`}
-                                onClick={(e) => handleCategoryClick(e, 'Cottage')}
-                            >
-                                Cottage
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className={`ms-0 bg-black-100 border-0 ${activeCategory === 'Chalet' ? 'active' : ''}`}
-                                onClick={(e) => handleCategoryClick(e, 'Chalet')}
-                            >
-                                Chalet
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className={`ms-0 bg-black-100 border-0 ${activeCategory === 'Manor' ? 'active' : ''}`}
-                                onClick={(e) => handleCategoryClick(e, 'Manor')}
-                            >
-                                Manor
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className={`ms-0 bg-black-100 border-0 ${activeCategory === 'Penthouse' ? 'active' : ''}`}
-                                onClick={(e) => handleCategoryClick(e, 'Penthouse')}
-                            >
-                                Penthouse
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className={`ms-0 bg-black-100 border-0 ${activeCategory === 'Farmhouse' ? 'active' : ''}`}
-                                onClick={(e) => handleCategoryClick(e, 'Farmhouse')}
-                            >
-                                Farmhouse
-                            </Button>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Button
-                                className={`ms-0 bg-black-100 border-0 ${activeCategory === 'Duplex' ? 'active' : ''}`}
-                                onClick={(e) => handleCategoryClick(e, 'Duplex')}
-                            >
-                                Duplex
-                            </Button>
-                        </SwiperSlide>
-                    </Swiper>
-                </div>
-                {/* End tabs */}
+                
+                {/* Add the filter component after the title */}
+                <PropertyFilter onFilterChange={handleFilterChange} />
+                
+                {/* Remove the entire tabs section with Swiper category buttons */}
+                
                 {/* Start cards */}
                 <motion.div
                     initial={{ x: -80 }}

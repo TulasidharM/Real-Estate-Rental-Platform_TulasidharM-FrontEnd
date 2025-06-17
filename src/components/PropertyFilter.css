@@ -1,0 +1,45 @@
+.filter-form {
+    background: rgba(13, 20, 33, 0.95);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(66, 99, 235, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.filter-form .form-label {
+    color: #fff;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.filter-form .form-control,
+.filter-form .form-select {
+    background: rgba(28, 39, 60, 0.95);
+    border: 1px solid rgba(66, 99, 235, 0.2);
+    color: #fff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.filter-form .form-control:focus,
+.filter-form .form-select:focus {
+    background: rgba(28, 39, 60, 0.95);
+    border-color: #4263eb;
+    box-shadow: 0 0 0 0.2rem rgba(66, 99, 235, 0.25);
+    color: #fff;
+}
+
+.filter-btn {
+    background: linear-gradient(135deg, #4263eb 0%, #1a3bb3 100%) !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.reset-btn {
+    border: 1px solid rgba(66, 99, 235, 0.3) !important;
+    color: #fff !important;
+}
+
+.reset-btn:hover {
+    background: rgba(66, 99, 235, 0.1) !important;
+}
