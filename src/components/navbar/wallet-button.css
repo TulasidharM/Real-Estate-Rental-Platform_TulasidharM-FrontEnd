@@ -1,0 +1,50 @@
+.wallet-container {
+  position: relative;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.wallet-button {
+  background: linear-gradient(135deg, #4263eb 0%, #1a3bb3 100%) !important;
+  border: none !important;
+  padding: 8px 20px !important; /* Reduced padding */
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  min-width: 180px;
+  margin: 0 !important; /* Remove any default margins */
+  height: fit-content;
+}
+
+/* Update disconnect button positioning */
+.disconnect-button {
+  position: absolute;
+  top: 100%; /* Position relative to container */
+  right: 0;
+  margin-top: 8px !important; /* Add space between buttons */
+  background: rgba(220, 53, 69, 0.9) !important;
+  border: none !important;
+  font-size: 0.85rem;
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Adjust the hover area */
+.wallet-container::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 32px; /* Reduced height */
+  background: transparent;
+}
+
+/* Rest of your existing styles remain the same */

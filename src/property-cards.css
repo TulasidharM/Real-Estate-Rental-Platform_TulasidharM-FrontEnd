@@ -1,0 +1,196 @@
+.property-card {
+  min-width: 300px;
+  max-width: 340px;
+  min-height: 420px; /* Added min-height */
+  margin: 0 auto;
+  background: rgba(13, 20, 33, 0.95) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(66, 99, 235, 0.07) !important;
+}
+
+.property-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(28, 39, 60, 0.35),
+              0 0 40px rgba(66, 99, 235, 0.1);
+  border: 1px solid rgba(66, 99, 235, 0.15) !important;
+}
+
+.property-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0; /* Updated to match card corners */
+  height: 260px; /* Increased from 240px */
+  width: 100%;
+  background: rgba(16, 23, 36, 0.95);
+  display: flex; /* Added to center image */
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+}
+
+.property-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This maintains aspect ratio while filling container */
+  object-position: center; /* Centers the image */
+  transition: transform 0.5s ease;
+  display: block; /* Removes any extra space */
+}
+
+@supports (aspect-ratio: 16/9) {
+  .property-image-container {
+    aspect-ratio: 4/3;
+    height: auto;
+  }
+}
+.property-card:hover .property-image {
+  transform: scale(1.08);
+}
+
+/* Gradient overlay for better text visibility */
+.property-image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(13, 20, 33, 0.3) 0%, rgba(13, 20, 33, 0) 50%);
+  pointer-events: none;
+}
+
+/* Heart icon styling */
+.like {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(28, 39, 60, 0.85);
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.like:hover {
+  background: rgba(66, 99, 235, 0.25);
+  transform: scale(1.1);
+}
+
+/* Card content styling */
+.property-card h5 {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.2rem; /* Slightly larger title */
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.property-card .gray-90 {
+  color: rgba(154, 168, 187, 0.8);
+  font-size: 0.9rem;
+}
+
+/* ETH amount styling */
+.property-card h6 {
+  color: #00ff88 !important;
+  font-weight: 600;
+}
+
+/* Countdown styling */
+.countdown {
+  color: #4263eb;
+  font-weight: 500;
+}
+
+/* Update container width for better spacing */
+.properties .container {
+  max-width: 1400px;
+  padding: 0 15px; /* Reduced from 20px */
+}
+
+/* Update responsive breakpoints */
+@media (max-width: 1200px) {
+  .property-card {
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 992px) {
+  .property-card {
+    min-width: 300px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .property-card {
+    min-width: 280px;
+    max-width: 100%;
+  }
+  
+  .property-image-container {
+    height: 220px;
+  }
+}
+
+/* Update card content layout and spacing */
+.property-content {
+  padding: 1.5rem;
+  height: calc(100% - 260px);
+  display: flex;
+  flex-direction: column;
+}
+
+.property-content h5 {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.property-content p.gray-90 {
+  margin-bottom: 1rem;
+}
+
+/* Create a wrapper for the bottom info */
+.property-info-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(66, 99, 235, 0.1);
+}
+
+/* Update the bid info container */
+.bid-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.bid-info-container > div {
+  flex: 1;
+}
+
+.bid-info-container .me-3 {
+  margin-right: 1.5rem !important;
+}
+
+/* Update ETH amount styling */
+.eth-amount {
+  color: #00ff88 !important;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Update countdown styling */
+.countdown {
+  color: #4263eb;
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.gray-90 {
+  color: rgba(154, 168, 187, 0.8);
+  font-size: 0.85rem;
+}

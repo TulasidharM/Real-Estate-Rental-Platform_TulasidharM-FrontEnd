@@ -1,0 +1,152 @@
+.line {
+  display: inline-block;
+  width: 1px;
+  height: 24px;
+  background-color: var(--gray-150);
+  margin-right: 100px;
+}
+
+.nav-link {
+  color: white;
+  letter-spacing: 0.3px;
+}
+
+.nav-link:hover {
+  color: #a8a8a8;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: none;
+  width: 35px;
+  height: 2px;
+  background-color: white;
+  border-radius: 25px;
+  position: relative;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+.navbar-toggler-icon::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: -12px;
+  background-color: white;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+
+.navbar-toggler-icon::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  bottom: -12px;
+  background-color: white;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+
+.navbar .container div .fa-heart {
+  color: white;
+  font-size: 20px;
+  position: relative;
+}
+
+.navbar .container div .fa-heart::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 60%;
+  height: 60%;
+  top: -1px;
+  right: -3px;
+  background-color: red;
+  border: 3px solid #121420;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.fa-heart:hover {
+  cursor: pointer;
+}
+
+.btn-primary {
+  padding: 7px 32px;
+  font-weight: 500;
+  margin-left: 50px;
+}
+
+.wallet-container {
+  position: relative;
+}
+
+.wallet-button {
+  background: linear-gradient(135deg, #4263eb 0%, #1a3bb3 100%) !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  min-width: 160px;
+}
+
+.wallet-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(66, 99, 235, 0.2);
+}
+
+.wallet-connected {
+  background: rgba(28, 39, 60, 0.95) !important;
+  border: 1px solid rgba(66, 99, 235, 0.2) !important;
+}
+
+.address-text {
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.disconnect-button {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: rgba(220, 53, 69, 0.9) !important;
+  border: none !important;
+  font-size: 0.85rem;
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.wallet-container:hover .disconnect-button {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+@media (max-width: 992px) {
+  .order {
+    order: -1;
+  }
+}
